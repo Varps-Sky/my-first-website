@@ -31,10 +31,20 @@ function playSound(audioId, imgElement) {
         imgElement.style.transform = 'scale(1)';
     }, 200);
     
-    var audio = document.getElementById('audioId');
-    var audioClone = audio.cloneNode(true);
-    audioClone.load();
-    audioClone.play();
+    setTimeout(function() {
+        var audio = document.getElementById('audioId');
+        console.log("Found audio element", audio);
+
+        if (audio) {
+         var audioClone = audio.cloneNode(true);
+         audioClone.load();
+         audioClone.play().catch(function(error) {
+            console.log("Play failed:", error);
+         });          
+        } else {
+            console.log("Audio element still not found!");
+        }
+    }, 50);
 }
 </script>
 </body>
