@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Piano Player</title>
+    <style> 
+
+    body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: rgb(175, 212, 226);
+}
+
+.piano-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+}
+
+.piano-row {
+    display: flex;
+    justify-content: center;
+}
+
+        .piano-key {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 100px;
+            margin: 8px;
+            border-radius: 20px;
+            font-size: 40px;
+            background-color: rgb(60, 183, 255);
+            cursor: pointer;
+            
+        }
+.piano-key:hover {
+    background-color: darkblue;
+}
+
+    </style>
+</head>
+<body>
+    <div class="piano-container">
+        <div class="piano-row">
+            <div class="piano-key" onclick="playNote('C')">C</div>
+            <div class="piano-key" onclick="playNote('D')">D</div>
+            <div class="piano-key" onclick="playNote('E')">E</div>
+            <div class="piano-key" onclick="playNote('F')">F</div>
+            <div class="piano-key" onclick="playNote('G')">G</div>
+        </div>
+        <div class="piano-row">    
+            <div class="piano-key" onclick="playNote('A')">A</div>
+            <div class="piano-key" onclick="playNote('B')">B</div>
+            <div class="piano-key" onclick="playNote('C')">C</div>
+            <div class="piano-key" onclick="playNote('D')">D</div>
+            <div class="piano-key" onclick="playNote('E')">E</div>
+        </div>
+        <div class="piano-row">
+            <div class="piano-key" onclick="playNote('F')">F</div>
+            <div class="piano-key" onclick="playNote('G')">G</div>
+            <div class="piano-key" onclick="playNote('A')">A</div>
+            <div class="piano-key" onclick="playNote('B')">B</div>
+            <div class="piano-key" onclick="playNote('C')">C</div>
+        </div>
+    </div>
+    
+    
+    <script>
+    function playNote(note) {
+        console.log("You clicked: " + note);
+    }
+    </script>
+</body>
+</html>
