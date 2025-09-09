@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>My First JavaScript Project</title>
+</head>
+
+<body style="background-color: lightskyblue; display: flex; justify-content: center; align-items: center; height: 100vh;">
+    <div style="text-align: center;">
+
+        <h1>Hello World!</h1>
+
+        <img src="icon_t_1.png" alt="Click for sound" style="width: 80px; cursor: pointer; margin-top: 5px" onclick="playSound('t_1Sound', this)">
+        <img src="icon_t_2.png" alt="Click for sound" style="width: 80px; cursor: pointer; margin-top: 20px" onclick="playSound('t_2Sound', this)">
+        <img src="icon_t_3.png" alt="Click for sound" style="width: 80px; cursor: pointer; margin-top: 20px" onclick="playSound('t_3Sound', this)">
+
+        <audio id="t_1Sound"><source src="t_1.mp3" type="audio/mpeg"></audio>
+        <audio id="t_2Sound"><source src="t_2.mp3" type="audio/mpeg"></audio>
+        <audio id="t_3Sound"><source src="t_3.mp3" type="audio/mpeg"></audio>
+
+        <p>This is my first webpage!</p>
+    </div>
+
+<script>
+function playSound(audioId, imgElement) {
+    console.log("Function called for: " + audioId);
+
+    var img = document.querySelector('img[alt="Click for sound"]');
+    imgElement.style.transform = 'scale(1.2)';
+    setTimeout(function () {
+        imgElement.style.transform = 'scale(1)';
+    }, 200);
+    
+    var audio = document.getElementById('audioId');
+    var audioClone = audio.cloneNode(true);
+    audioClone.load();
+    audioClone.play();
+}
+</script>
+</body>
+
+</html>
