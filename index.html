@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>Piano Player</title>
+    <style> 
+
+    body {
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    background-color: rgb(123, 187, 212);
+}
+
+.piano-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+}
+
+.piano-row {
+    display: flex;
+    justify-content: center;
+}
+
+        .piano-key {
+            width: 100px;
+            height: 100px;
+            border: 2px solid black;
+            text-align: center;
+            line-height: 100px;
+            margin: 8px;
+            border-radius: 20px;
+            font-size: 40px;
+            background-color: rgb(27, 171, 228);
+            cursor: pointer;
+            transition: transform 0.1s ease;
+            
+        }
+.piano-key:active {
+    background-color: orange;
+    transform: scale(0.95);
+}
+
+    </style>
+</head>
+<body>
+    <div class="piano-container">
+
+        <audio id="sound-C1" preload=" auto">
+            <source src="piano-t1.mp3" type="audio/mpeg">
+        </audio>
+
+        <div class="piano-row">
+            <div class="piano-key" onclick="playNote('C1')">C</div>
+            <div class="piano-key" onclick="playNote('D1')">D</div>
+            <div class="piano-key" onclick="playNote('E1')">E</div>
+            <div class="piano-key" onclick="playNote('F1')">F</div>
+            <div class="piano-key" onclick="playNote('G1')">G</div>
+        </div>
+        <div class="piano-row">    
+            <div class="piano-key" onclick="playNote('A2')">A</div>
+            <div class="piano-key" onclick="playNote('B2')">B</div>
+            <div class="piano-key" onclick="playNote('C2')">C</div>
+            <div class="piano-key" onclick="playNote('D2')">D</div>
+            <div class="piano-key" onclick="playNote('E2')">E</div>
+        </div>
+        <div class="piano-row">
+            <div class="piano-key" onclick="playNote('F3')">F</div>
+            <div class="piano-key" onclick="playNote('G3')">G</div>
+            <div class="piano-key" onclick="playNote('A3')">A</div>
+            <div class="piano-key" onclick="playNote('B3')">B</div>
+            <div class="piano-key" onclick="playNote('C3')">C</div>
+        </div>
+    </div>
+    
+    
+    <script>
+    function playNote(noteId) {
+        console.log("Playing: " + noteId);
+
+            var audio = document.getElementById('sound-' + noteId);
+            if (audio) {
+                var audioClone = audio.cloneNode(true);
+                audioClone.play()
+                audio.play()
+        } else {
+            console.log("No sound file for: " + noteId);
+        }
+    }
+    </script>
+</body>
+</html>
