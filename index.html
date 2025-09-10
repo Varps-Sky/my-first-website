@@ -25,6 +25,11 @@
     justify-content: center;
 }
 
+@keyframes ripple {
+    0% { transform: scale(1); opacity: 1; }
+    100% {transform: scale(1.2); opacity: 0; }
+}
+
         .piano-key {
             width: 100px;
             height: 100px;
@@ -37,11 +42,12 @@
             background-color: rgb(27, 171, 228);
             cursor: pointer;
             transition: transform 0.1s ease;
+            animation: forwards
             
         }
 .piano-key:active {
     background-color: orange;
-    transform: scale(0.95);
+    transform: scale(0.90);
 }
 
     </style>
@@ -49,33 +55,77 @@
 <body>
     <div class="piano-container">
 
+        <!-- top row -->
         <audio id="sound-C1" preload=" auto">
             <source src="piano-t1.mp3" type="audio/mpeg">
         </audio>
+        <audio id="sound-D1" preload=" auto">
+            <source src="piano-t2.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="sound-E1" preload=" auto">
+            <source src="piano-t3.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="sound-F1" preload=" auto">
+            <source src="piano-t4.mp3" type="audio/mpeg">
+        </audio>
+        <audio id="sound-G1" preload=" auto">
+            <source src="piano-t5.wav" type="audio/wav">
+        </audio>
+       <!-- middle row -->
+         <audio id="sound-A2" preload=" auto">
+            <source src="piano-m1.wav" type="audio/wav">
+        </audio>
+        <audio id="sound-B2" preload=" auto">
+            <source src="piano-m2.wav" type="audio/wav">
+        </audio>
+        <audio id="sound-C2" preload=" auto">
+            <source src="piano-m3.wav" type="audio/wav">
+        </audio>
+        <audio id="sound-D2" preload=" auto">
+            <source src="piano-m4.wav" type="audio/wav">
+        </audio>
+        <audio id="sound-E2" preload=" auto">
+            <source src="piano-m5.wav" type="audio/wav">
+        </audio>
+        <!-- bottom row -->
+        <audio id="sound-F3" preload=" auto">
+            <source src="piano-b1.wav" type="audio/wav">
+        </audio>
+        <audio id="sound-G3" preload=" auto">
+            <source src="piano-b2.wav" type="audio/wav">
+        </audio>
+        <audio id="sound-A3" preload=" auto">
+            <source src="piano-b3.wav" type="audio/wav">
+        </audio>
+        <audio id="sound-B3" preload=" auto">
+            <source src="piano-b4.wav" type="audio/wav">
+        </audio>
+        <audio id="sound-C3" preload=" auto">
+            <source src="piano-b5.wav" type="audio/wav">
+        </audio>
 
         <div class="piano-row">
-            <div class="piano-key" onclick="playNote('C1')">C</div>
-            <div class="piano-key" onclick="playNote('D1')">D</div>
-            <div class="piano-key" onclick="playNote('E1')">E</div>
-            <div class="piano-key" onclick="playNote('F1')">F</div>
-            <div class="piano-key" onclick="playNote('G1')">G</div>
+            <div class="piano-key" onmousedown="playNote('C1')">C</div>
+            <div class="piano-key" onmousedown="playNote('D1')">D</div>
+            <div class="piano-key" onmousedown="playNote('E1')">E</div>
+            <div class="piano-key" onmousedown="playNote('F1')">F</div>
+            <div class="piano-key" onmousedown="playNote('G1')">G</div>
         </div>
         <div class="piano-row">    
-            <div class="piano-key" onclick="playNote('A2')">A</div>
-            <div class="piano-key" onclick="playNote('B2')">B</div>
-            <div class="piano-key" onclick="playNote('C2')">C</div>
-            <div class="piano-key" onclick="playNote('D2')">D</div>
-            <div class="piano-key" onclick="playNote('E2')">E</div>
+            <div class="piano-key" onmousedown="playNote('A2')">A</div>
+            <div class="piano-key" onmousedown="playNote('B2')">B</div>
+            <div class="piano-key" onmousedown="playNote('C2')">C</div>
+            <div class="piano-key" onmousedown="playNote('D2')">D</div>
+            <div class="piano-key" onmousedown="playNote('E2')">E</div>
         </div>
         <div class="piano-row">
-            <div class="piano-key" onclick="playNote('F3')">F</div>
-            <div class="piano-key" onclick="playNote('G3')">G</div>
-            <div class="piano-key" onclick="playNote('A3')">A</div>
-            <div class="piano-key" onclick="playNote('B3')">B</div>
-            <div class="piano-key" onclick="playNote('C3')">C</div>
+            <div class="piano-key" onmousedown="playNote('F3')">F</div>
+            <div class="piano-key" onmousedown="playNote('G3')">G</div>
+            <div class="piano-key" onmousedown="playNote('A3')">A</div>
+            <div class="piano-key" onmousedown="playNote('B3')">B</div>
+            <div class="piano-key" onmousedown="playNote('C3')">C</div>
         </div>
     </div>
-    
     
     <script>
     function playNote(noteId) {
