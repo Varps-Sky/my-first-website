@@ -59,6 +59,11 @@
             background-color: orange;
             transform: scale(0.90);
         }
+        .piano-key.keyboard-active {
+            background-color: orange;
+            transform: scale(0.90);
+
+        }
     </style>
 </head>
 
@@ -116,55 +121,54 @@
 
         <div class="piano-row">
             <div class="piano-key" onmousedown="playNote('C1')" 
-            ontouchend="testTouch('C1')">C</div>
+            ontouchstart="testTouch('C1', event)">C</div>
             <div class="piano-key" onmousedown="playNote('D1')" 
-            ontouchstart="playNoteTouch('D1')">D</div>
+            ontouchstart="playNoteTouch('D1', event)">D</div>
             <div class="piano-key" onmousedown="playNote('E1')" 
-            ontouchstart="playNoteTouch('E1')">E</div>
+            ontouchstart="playNoteTouch('E1', event)">E</div>
             <div class="piano-key" onmousedown="playNote('F1')" 
-            ontouchstart="playNoteTouch('F1')">F</div>
+            ontouchstart="playNoteTouch('F1', event)">F</div>
             <div class="piano-key" onmousedown="playNote('G1')" 
-            ontouchstart="playNoteTouch('G1')">G</div>
+            ontouchstart="playNoteTouch('G1', event)">G</div>
         </div>
         <div class="piano-row">
             <div class="piano-key" onmousedown="playNote('A2')"
-            ontouchstart="playNoteTouch('A2')">A</div>
+            ontouchstart="playNoteTouch('A2', event)">A</div>
             <div class="piano-key" onmousedown="playNote('B2')"
-            ontouchstart="playNoteTouch('B2')">B</div>
+            ontouchstart="playNoteTouch('B2', event)">B</div>
             <div class="piano-key" onmousedown="playNote('C2')"
-            ontouchstart="playNoteTouch('C2')">C</div>
+            ontouchstart="playNoteTouch('C2', event)">C</div>
             <div class="piano-key" onmousedown="playNote('D2')"
-            ontouchstart="playNoteTouch('D2')">D</div>
+            ontouchstart="playNoteTouch('D2', event)">D</div>
             <div class="piano-key" onmousedown="playNote('E2')"
-            ontouchstart="playNoteTouch('E2')">E</div>
+            ontouchstart="playNoteTouch('E2', event)">E</div>
         </div>
         <div class="piano-row">
             <div class="piano-key" onmousedown="playNote('F3')"
-            ontouchstart="playNoteTouch('F3')">F</div>
+            ontouchstart="playNoteTouch('F3', event)">F</div>
             <div class="piano-key" onmousedown="playNote('G3')"
-            ontouchstart="playNoteTouch('G3')">G</div>
+            ontouchstart="playNoteTouch('G3', event)">G</div>
             <div class="piano-key" onmousedown="playNote('A3')"
-            ontouchstart="playNoteTouch('A3')">A</div>
+            ontouchstart="playNoteTouch('A3', event)">A</div>
             <div class="piano-key" onmousedown="playNote('B3')"
-            ontouchstart="playNoteTouch('B3')">B</div>
+            ontouchstart="playNoteTouch('B3', event)">B</div>
             <div class="piano-key" onmousedown="playNote('C3')"
-            ontouchstart="playNoteTouch('C3')">C</div>
+            ontouchstart="playNoteTouch('C3', event)">C</div>
         </div>
     </div>
 
     <script>
-        function playNote(noteId) {
-            console.log("Playing: " + noteId);
-
-            var audio = document.getElementById('sound-' + noteId);
-            if (audio) {
-                var audioClone = audio.cloneNode(true);
-                audioClone.play()
-                audio.play()
+    function playNote(noteId) {
+        console.log("Playing: " + noteId);
+        var audio = document.getElementById('sound-' + noteId);
+        if (audio) {
+            var audioClone = audio.cloneNode(true);
+            audioClone.play();
+            audio.play();
         } else {
-                console.log("No sound file for: " + noteId);
+            console.log("No sound file for: " + noteId);
+        }
     }
-}
 
 
         function playNoteTouch(noteId, event) {
@@ -172,11 +176,33 @@
             playNote(noteId);
 }
 
-            var allKeys = document.getElementsByClassName('piano-key');
-            for (var i = 0; i < allKeys.length; i++) {
-                allKeys[i].addEventListener('mousedown', function() {
-    });
- }
+            var keyMap = {
+                'q': 'C1',
+                'w': 'D1', 
+                'e': 'E1',
+                'r': 'F1',
+                't': 'G1',
+                'a': 'A2',
+                's': 'B2', 
+                'd': 'C2',
+                'f': 'D2',
+                'g': 'E2',
+                'z': 'F3',
+                'x': 'G3',
+                'c': 'A3',
+                'v': 'B3',
+                'b': 'C3'
+            };
+
+        document.addEventListener('keydown', function(event) {
+            var key = event.key.toLowerCase();
+            if (keyMap[key]) {
+                event.preventDefault();
+                console.log("About to light up a key!");
+                playNote(keyMap[key]);
+                console.log("Keyboard played: " + key + " -> " + keyMap[key]);
+            }
+        });
     </script>
 </body>
 
