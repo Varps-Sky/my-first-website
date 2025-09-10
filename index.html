@@ -50,7 +50,7 @@
             cursor: pointer;
             transition: transform 0.1s ease;
             animation: forwards;
-            user-select: none; 
+            user-select: none;
             -webkit-user-select: none;
             -webkit-touch-callout: none;
         }
@@ -59,6 +59,7 @@
             background-color: orange;
             transform: scale(0.90);
         }
+
         .piano-key.keyboard-active {
             background-color: orange;
             transform: scale(0.90);
@@ -120,89 +121,118 @@
         </audio>
 
         <div class="piano-row">
-            <div class="piano-key" onmousedown="playNote('C1')" 
-            ontouchstart="testTouch('C1', event)">C</div>
-            <div class="piano-key" onmousedown="playNote('D1')" 
-            ontouchstart="playNoteTouch('D1', event)">D</div>
-            <div class="piano-key" onmousedown="playNote('E1')" 
-            ontouchstart="playNoteTouch('E1', event)">E</div>
-            <div class="piano-key" onmousedown="playNote('F1')" 
-            ontouchstart="playNoteTouch('F1', event)">F</div>
-            <div class="piano-key" onmousedown="playNote('G1')" 
-            ontouchstart="playNoteTouch('G1', event)">G</div>
+            <div class="piano-key" id="key-C1" onmousedown="playNote('C1')" ontouchstart="playNoteTouch('C1', event)">C
+            </div>
+            <div class="piano-key" id="key-D1" onmousedown="playNote('D1')" ontouchstart="playNoteTouch('D1', event)">D
+            </div>
+            <div class="piano-key" id="key-E1" onmousedown="playNote('E1')" ontouchstart="playNoteTouch('E1', event)">E
+            </div>
+            <div class="piano-key" id="key-F1" onmousedown="playNote('F1')" ontouchstart="playNoteTouch('F1', event)">F
+            </div>
+            <div class="piano-key" id="key-G1" onmousedown="playNote('G1')" ontouchstart="playNoteTouch('G1', event)">G
+            </div>
         </div>
         <div class="piano-row">
-            <div class="piano-key" onmousedown="playNote('A2')"
-            ontouchstart="playNoteTouch('A2', event)">A</div>
-            <div class="piano-key" onmousedown="playNote('B2')"
-            ontouchstart="playNoteTouch('B2', event)">B</div>
-            <div class="piano-key" onmousedown="playNote('C2')"
-            ontouchstart="playNoteTouch('C2', event)">C</div>
-            <div class="piano-key" onmousedown="playNote('D2')"
-            ontouchstart="playNoteTouch('D2', event)">D</div>
-            <div class="piano-key" onmousedown="playNote('E2')"
-            ontouchstart="playNoteTouch('E2', event)">E</div>
+            <div class="piano-key" id="key-A2" onmousedown="playNote('A2')" ontouchstart="playNoteTouch('A2', event)">A
+            </div>
+            <div class="piano-key" id="key-B2" onmousedown="playNote('B2')" ontouchstart="playNoteTouch('B2', event)">B
+            </div>
+            <div class="piano-key" id="key-C2" onmousedown="playNote('C2')" ontouchstart="playNoteTouch('C2', event)">C
+            </div>
+            <div class="piano-key" id="key-D2" onmousedown="playNote('D2')" ontouchstart="playNoteTouch('D2', event)">D
+            </div>
+            <div class="piano-key" id="key-E2" onmousedown="playNote('E2')" ontouchstart="playNoteTouch('E2', event)">E
+            </div>
         </div>
         <div class="piano-row">
-            <div class="piano-key" onmousedown="playNote('F3')"
-            ontouchstart="playNoteTouch('F3', event)">F</div>
-            <div class="piano-key" onmousedown="playNote('G3')"
-            ontouchstart="playNoteTouch('G3', event)">G</div>
-            <div class="piano-key" onmousedown="playNote('A3')"
-            ontouchstart="playNoteTouch('A3', event)">A</div>
-            <div class="piano-key" onmousedown="playNote('B3')"
-            ontouchstart="playNoteTouch('B3', event)">B</div>
-            <div class="piano-key" onmousedown="playNote('C3')"
-            ontouchstart="playNoteTouch('C3', event)">C</div>
+            <div class="piano-key" id="key-F3" onmousedown="playNote('F3')" ontouchstart="playNoteTouch('F3', event)">F
+            </div>
+            <div class="piano-key" id="key-G3" onmousedown="playNote('G3')" ontouchstart="playNoteTouch('G3', event)">G
+            </div>
+            <div class="piano-key" id="key-A3" onmousedown="playNote('A3')" ontouchstart="playNoteTouch('A3', event)">A
+            </div>
+            <div class="piano-key" id="key-B3" onmousedown="playNote('B3')" ontouchstart="playNoteTouch('B3', event)">B
+            </div>
+            <div class="piano-key" id="key-C3" onmousedown="playNote('C3')" ontouchstart="playNoteTouch('C3', event)">C
+            </div>
         </div>
     </div>
 
     <script>
-    function playNote(noteId) {
-        console.log("Playing: " + noteId);
-        var audio = document.getElementById('sound-' + noteId);
-        if (audio) {
-            var audioClone = audio.cloneNode(true);
-            audioClone.play();
-            audio.play();
-        } else {
-            console.log("No sound file for: " + noteId);
+        function playNote(noteId) {
+            console.log("Playing: " + noteId);
+            var audio = document.getElementById('sound-' + noteId);
+            if (audio) {
+                var audioClone = audio.cloneNode(true);
+                audioClone.play();
+                audio.play();
+            } else {
+                console.log("No sound file for: " + noteId);
+            }
         }
-    }
 
 
         function playNoteTouch(noteId, event) {
             event.preventDefault();
             playNote(noteId);
-}
+        }
 
-            var keyMap = {
-                'q': 'C1',
-                'w': 'D1', 
-                'e': 'E1',
-                'r': 'F1',
-                't': 'G1',
-                'a': 'A2',
-                's': 'B2', 
-                'd': 'C2',
-                'f': 'D2',
-                'g': 'E2',
-                'z': 'F3',
-                'x': 'G3',
-                'c': 'A3',
-                'v': 'B3',
-                'b': 'C3'
-            };
+        var keyMap = {
+            'q': 'C1',
+            'w': 'D1',
+            'e': 'E1',
+            'r': 'F1',
+            't': 'G1',
+            'a': 'A2',
+            's': 'B2',
+            'd': 'C2',
+            'f': 'D2',
+            'g': 'E2',
+            'z': 'F3',
+            'x': 'G3',
+            'c': 'A3',
+            'v': 'B3',
+            'b': 'C3'
+        };
 
-        document.addEventListener('keydown', function(event) {
+        document.addEventListener('keydown', function (event) {
+
+            console.log("Any key pressed: " + event.key);
+
             var key = event.key.toLowerCase();
             if (keyMap[key]) {
                 event.preventDefault();
                 console.log("About to light up a key!");
-                playNote(keyMap[key]);
-                console.log("Keyboard played: " + key + " -> " + keyMap[key]);
+                console.log("Looking for piano key with letter: " + keyMap[key][0]);
+
+                var allKeys = document.getElementsByClassName('piano-key');
+                console.log("Found " + allKeys.length + " piano keys total");
+
+                console.log("First piano key says: " + allKeys[0].textContent);
+                console.log("Second piano key says: " + allKeys[1].textContent);
+
+                var pianoKey = document.getElementById('key-' + keyMap[key])
+                if (pianoKey) {
+                    pianoKey.classList.add('keyboard-active');
+
+                    playNote(keyMap[key]);
+                    console.log("Keyboard played: " + key + " -> " + keyMap[key]);
+
+                }
             }
         });
+        
+        document.addEventListener('keyup', function (event) {
+            var key = event.key.toLowerCase();
+            if (keyMap[key]) {
+                var pianoKey = document.getElementById('key-' + keyMap[key])
+                if (pianoKey) {
+                    pianoKey.classList.remove('keyboard-active');
+
+                }
+            }
+        });
+
     </script>
 </body>
 
