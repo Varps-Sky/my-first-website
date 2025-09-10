@@ -49,7 +49,10 @@
             background-color: rgb(27, 171, 228);
             cursor: pointer;
             transition: transform 0.1s ease;
-            animation: forwards
+            animation: forwards;
+            user-select: none; 
+            -webkit-user-select: none;
+            -webkit-touch-callout: none;
         }
 
         .piano-key:active {
@@ -113,7 +116,7 @@
 
         <div class="piano-row">
             <div class="piano-key" onmousedown="playNote('C1')" 
-            ontouchstart="playNoteTouch('C1')">C</div>
+            ontouchstart="testTouch('C1')">C</div>
             <div class="piano-key" onmousedown="playNote('D1')" 
             ontouchstart="playNoteTouch('D1')">D</div>
             <div class="piano-key" onmousedown="playNote('E1')" 
@@ -144,8 +147,8 @@
             ontouchstart="playNoteTouch('A3')">A</div>
             <div class="piano-key" onmousedown="playNote('B3')"
             ontouchstart="playNoteTouch('B3')">B</div>
-            <div class="piano-key" onmousedown="playNote('C3')"o
-            ntouchstart="playNoteTouch('C3')">C</div>
+            <div class="piano-key" onmousedown="playNote('C3')"
+            ontouchstart="playNoteTouch('C3')">C</div>
         </div>
     </div>
 
@@ -162,6 +165,12 @@
                 console.log("No sound file for: " + noteId);
     }
 }
+
+        function testTouch(noteId) {
+            console.log("Touch detected for: + noteId");
+            alert("Touch worked for " + noteId);
+            playNote(noteId)
+        }
 
         function playNoteTouch(noteId, event) {
             event.preventDefault();
